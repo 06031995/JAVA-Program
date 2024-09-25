@@ -1,0 +1,52 @@
+1. Procedure:
+   A procedure is a collection of SQL statements.
+
+ Stored Procedure Features:-
+ 1.Stored Procedure increases the performance of the applications.
+ 2.tored procedure reduce the time.
+
+How to create a procedure:-
+  CREATE PROCEDURE procedure_name[parameter]
+
+procedure contain IN para,OUT para and INOUT para.
+
+How to call a stored procedure?
+  CALL procedure_name ( parameter(s)) 
+Example:  
+
+       DELIMITER //
+
+CREATE PROCEDURE himamshu(IN p_id INT)
+BEGIN
+    SELECT 
+        *
+    FROM
+        ehat_treatment
+    WHERE
+        patient_id = p_id;
+END //
+
+DELIMITER ;
+
+call himamshu(12)
+
+
+2.Function:-
+   A function always returns a value using the return statement
+   
+DELIMITER $$
+create function `hema`(p_id int(12)) 
+RETURNS varchar(100)
+BEGIN
+    declare p_name VARCHAR(100);
+  SELECT 
+    f_name
+INTO p_name FROM
+    ehat_patient
+WHERE
+    patient_id = p_id;
+    Return  p_name;   
+END $$
+
+select  hema(12);
+
